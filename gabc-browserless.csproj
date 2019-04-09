@@ -10,6 +10,10 @@
   <ItemGroup>
     <PackageReference Include="flurl" Version="2.8.1" />
     <PackageReference Include="flurl.http" Version="2.4.1" />
+    <PackageReference Include="FSharp.Core" Version="4.6.2" />
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.3.3" />
+    <PackageReference Include="NBomber" Version="0.9.0" />
+    <PackageReference Include="NFLags" Version="1.7.0" />
   </ItemGroup>
 
 </Project>
