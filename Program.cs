@@ -14,6 +14,7 @@ namespace GabcBrowserless
     class Program
     {
         private const string Path = "test-pdf.pdf";
+        private const string BrowserlessAddress = "https://browserless-web-demo-dockerapp.azurewebsites.net/pdf?token=MTQ3ZTRmYjdjYjU5NDY2OGI0ZjNlMDk4YThlMmQ2ZDc=";
         private static readonly JsonSerializerSettings JsonSettings
             = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
 
@@ -25,31 +26,37 @@ namespace GabcBrowserless
             };
             app.HelpOption();
 
-            app.Command("basic",  cmd =>
-            {
-                Console.WriteLine("Generating Basic PDF");
-                var textToGenerate = cmd.Argument("text", "Text to generate a PDF from").IsRequired();
-                cmd.OnExecute(async () => await GeneratePdf(textToGenerate.Value, openFile: true));
-            });
+            app.Command("basic", cmd =>
+           {
+               var textToGenerate = cmd.Argument("text", "Text to generate a PDF from").IsRequired();
+               cmd.OnExecute(async () =>
+               {
+                   Console.WriteLine("Generating Basic PDF");
+                   await GeneratePdf(textToGenerate.Value, openFile: true);
+               });
+           });
 
-            app.Command("stress",  cmd =>
-            {
-                Console.WriteLine("Stress testing PDFs");
+            app.Command("stress", cmd =>
+           {
 
-                var step1 = Step.CreateAction("Generate PDF", ConnectionPool.None, async context =>
-                {
-                    var guid = Guid.NewGuid();
-                    await GeneratePdf(guid.ToString(), $"{guid}.pdf");
-                    return Response.Ok();
-                });
+               var step1 = Step.CreateAction("Generate PDF", ConnectionPool.None, async context =>
+               {
+                   var guid = Guid.NewGuid();
+                   await GeneratePdf(guid.ToString(), $"{guid}.pdf");
+                   return Response.Ok();
+               });
 
-                var scenario = ScenarioBuilder.CreateScenario("Generating PDFs!", step1)
-                    .WithConcurrentCopies(10)
-                    .WithDuration(TimeSpan.FromSeconds(30));
+               var scenario = ScenarioBuilder.CreateScenario("Generating PDFs!", step1)
+                   .WithConcurrentCopies(10)
+                   .WithDuration(TimeSpan.FromSeconds(30));
 
-                cmd.OnExecute( () => NBomberRunner.RegisterScenarios(scenario)
-                    .RunInConsole());
-            });
+               cmd.OnExecute(() =>
+               {
+                   Console.WriteLine("Stress testing PDFs");
+                   NBomberRunner.RegisterScenarios(scenario)
+                       .RunInConsole();
+               });
+           });
 
             app.OnExecute(() =>
             {
@@ -66,7 +73,7 @@ namespace GabcBrowserless
             FlurlHttp.Configure(c => c.JsonSerializer =
                 new Flurl.Http.Configuration.NewtonsoftJsonSerializer(JsonSettings));
 
-            var pdfBytes = await "http://localhost:3000/pdf"
+            var pdfBytes = await BrowserlessAddress
                 .PostJsonAsync(new PdfOptions
                 {
                     Html = $"<h1>{textToGenerate}</h1>",

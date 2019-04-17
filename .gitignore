@@ -331,3 +331,11 @@ ASALocalRun/
 
 # Test PDFs
 *.pdf
+
+# Terraform state - local for this project
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+
+# NBomber
+reports/
