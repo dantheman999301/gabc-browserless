@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browserless.API", "API\Browserless.API.csproj", "{12A045E1-6CE6-4F16-9860-9243968D05F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StressTester", "StressTest\StressTester.csproj", "{8298EB2A-EA93-4703-BCF2-CCB8A67202B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12A045E1-6CE6-4F16-9860-9243968D05F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12A045E1-6CE6-4F16-9860-9243968D05F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12A045E1-6CE6-4F16-9860-9243968D05F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12A045E1-6CE6-4F16-9860-9243968D05F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8298EB2A-EA93-4703-BCF2-CCB8A67202B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8298EB2A-EA93-4703-BCF2-CCB8A67202B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8298EB2A-EA93-4703-BCF2-CCB8A67202B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8298EB2A-EA93-4703-BCF2-CCB8A67202B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B4C7D78-2EC9-4171-9388-1157FCA4FB6B}
+	EndGlobalSection
+EndGlobal
