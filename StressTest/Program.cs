@@ -14,7 +14,7 @@ namespace GabcBrowserless
     class Program
     {
         private const string Path = "test-pdf.pdf";
-        private const string BrowserlessAddress = "https://browserless-web-demo-dockerapp.azurewebsites.net/pdf?token=MTQ3ZTRmYjdjYjU5NDY2OGI0ZjNlMDk4YThlMmQ2ZDc=";
+        private const string BrowserlessAddress = "https://browserless-webapp-demo-dockerapp.azurewebsites.net/pdf?token=MTQ3ZTRmYjdjYjU5NDY2OGI0ZjNlMDk4YThlMmQ2ZDc=";
         private static readonly JsonSerializerSettings JsonSettings
             = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
 
