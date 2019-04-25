@@ -19,8 +19,8 @@ namespace Browserless.API
             = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
 
 
-        [FunctionName(nameof(GenerteAndSave))]
-        public static async Task GenerteAndSave(
+        [FunctionName(nameof(GenerateAndSave))]
+        public static async Task GenerateAndSave(
             [ServiceBusTrigger("browserless-apps", Connection = "servicebusconnection")] string pdfRequestJson,
             [Blob("pdf", FileAccess.ReadWrite, Connection = "storageconnectionstring")] CloudBlobContainer pdfContainer,
             ILogger log)
